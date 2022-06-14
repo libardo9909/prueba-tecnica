@@ -1,0 +1,78 @@
+<app-header></app-header>
+<div class="cont-categories">
+
+    <table class="table table-light">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Parent category</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of all_categories; index as i;">
+            <th scope="row">{{category.id}}</th>
+            <td>{{category.title}}</td>
+            <td>{{category.description}}</td>
+            <td>{{category.idParentCategory}}</td>
+            <td>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit" (click)="editCategory(category)"><i class="fa fa-edit"></i></button>
+            </td>
+            <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="fa fa-trash"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalEditLabel">Edit Category</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="row">
+                    <div class="col-md-6 mb-3" ><span>Title</span><input type="text" class="form-control" [value]="editTitle"  > </div>
+                    <div class="col-md-6 mb-3" ><span>Description</span><input type="text" class="form-control" [value]="editDescription"></div>
+                   
+                    <div class="col-md-12"><span>Parent category</span>
+                        <select class="form-control" [value]="editIdParentCategory">
+                        <option value="1">None</option>
+                        <option *ngFor="let cat_par of all_categories; index as i;" value="{{cat_par.id}}">{{cat_par.title}}</option>
+                        
+                        </select>
+                </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalDeleteLabel">Delete Category</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete the category?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Cancel</button>
+              <button type="button" class="btn btn-danger">Yes, Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<app-footer></app-footer>

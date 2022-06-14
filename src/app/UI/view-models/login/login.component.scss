@@ -40,6 +40,9 @@
   letter-spacing: 1px;
 }
 
+.error-message {
+  color:red;
+}
 .login-info {
   background: linear-gradient(
     180deg,
@@ -67,8 +70,8 @@
 }
 
 .btn-sign-up{
-    background-color: transparent;
-    border-color: black;
+    background-color: #2323a8;
+    border-color: white;
     margin-top: 20px;
     border-radius: 20px;
     color: #ffffff;
